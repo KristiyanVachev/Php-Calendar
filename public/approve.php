@@ -1,11 +1,11 @@
 <?php
 
-/**
- * Delete a user
- */
-
 require "../config.php";
 require "../common.php";
+
+if ($_SESSION['role'] != 'admin'){
+    header("Location: login.php");
+}
 
 if (isset($_GET["id"])) {
     try {

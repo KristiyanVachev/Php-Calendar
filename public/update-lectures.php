@@ -7,6 +7,10 @@
 require "../config.php";
 require "../common.php";
 
+if (!($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'moderator')){
+    header("Location: login.php");
+}
+
 try {
     $connection = new PDO($dsn, $username, $password, $options);
 

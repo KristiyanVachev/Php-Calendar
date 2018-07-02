@@ -32,29 +32,29 @@ else{
 ?>
 <?php require "templates/header.php"; ?>
 
-    <a href="index.php">Back to home</a>
 
 <?php
 
+switch ($id){
+    case 1:
+        echo "<h3>Monday</h3>";
+        break;
+    case 2:
+        echo "<h3>Tuesday</h3>";
+        break;
+    case 3:
+        echo "<h3>Wednesday</h3>";
+        break;
+    case 4:
+        echo "<h3>Thursday</h3>";
+        break;
+    case 5:
+        echo "<h3>Friday</h3>";
+        break;
+}
+
     echo "<div class=\"day-container\">";
 
-    switch ($id){
-        case 1:
-            echo "<h3>Monday</h3>";
-            break;
-        case 2:
-            echo "<h3>Tuesday</h3>";
-            break;
-        case 3:
-            echo "<h3>Wednesday</h3>";
-            break;
-        case 4:
-            echo "<h3>Thursday</h3>";
-            break;
-        case 5:
-            echo "<h3>Friday</h3>";
-            break;
-    }
 
     echo "<div class=\"day\">";
 
@@ -72,10 +72,10 @@ else{
         echo "<div class=\"hour\">";
 
         foreach ($result as $lecture) :
-            if ($lecture["startHour"] == $hour && $lecture["dayId"] == $day){
+            if ($lecture["startHour"] == $hour){
                 $noLectures = false;
 
-                echo "<div class=\"event event-start event-end\" data-span=",$lecture["duration"], ">", $lecture["subjectName"], " in room ", $lecture["semesterRoom"], "</div>";
+                echo "<div class=\"event event-start event-end\" data-span=",$lecture["duration"], "><b>", $lecture["subjectName"], "</b> - <i>", $lecture["semesterRoom"], "</i> - ", $lecture["lecturerName"], "</div>";
             }
         endforeach;
 
@@ -88,3 +88,5 @@ else{
     echo "</div>";
 
     echo "</div>";
+
+    echo "<a href=\"weekly.php\">Back to weekly view</a>";

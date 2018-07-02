@@ -37,7 +37,9 @@ th {
 }
 
 .event {
-	background-color: #CCC;
+	background-color: #2980b9;
+	text-align: center;
+	color: white;
 }
 
 .event-end {

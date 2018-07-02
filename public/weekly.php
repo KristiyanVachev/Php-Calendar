@@ -29,19 +29,19 @@ try {
 
                 switch ($day){
                     case 1:
-                        echo "<h3>Monday</h3>";
+                        echo "<h3><a href=\"daily.php?id=1\">Monday</a></h3>";
                     break;
                     case 2:
-                        echo "<h3>Tuesday</h3>";
+                        echo "<h3><a href=\"daily.php?id=2\">Tuesday</a></h3>";
                     break;
                     case 3:
-                        echo "<h3>Wednesday</h3>";
+                        echo "<h3><a href=\"daily.php?id=3\">Wednesday</a></h3>";
                     break;
                     case 4:
-                        echo "<h3>Thursday</h3>";
+                        echo "<h3><a href=\"daily.php?id=4\">Thursday</a></h3>";
                     break;
                     case 5:
-                        echo "<h3>Friday</h3>";
+                        echo "<h3><a href=\"daily.php?id=5\">Friday</a></h3>";
                     break;
                 }
 
@@ -64,7 +64,7 @@ try {
                                     if ($lecture["startHour"] == $hour && $lecture["dayId"] == $day){
                                         $noLectures = false;
 
-                                        echo "<div class=\"event event-start event-end\" data-span=",$lecture["duration"], ">", $lecture["subjectName"], " in room ", $lecture["semesterRoom"], "</div>";
+                                        echo "<div class=\"event event-start event-end\" data-span=",$lecture["duration"], "><b>", $lecture["subjectName"], "</b> - <i>", $lecture["semesterRoom"], "</i>", "</div>";
                                     }
                             endforeach;
 

@@ -1,3 +1,4 @@
+
 label {
 	display: block;
 	margin: 5px 0;
@@ -14,7 +15,6 @@ th {
 	border-bottom: 1px solid #aaa;
 }
 
-
 .day {
 	display:grid;
 	grid-template-columns: repeat(11, 1fr);
@@ -22,7 +22,10 @@ th {
 	grid-gap: 2px 10px;
 }
 
-
+.hour {
+	display:contents;
+	background-color: #DDD; /* if display contents, this won't color */
+}
 .hour-label {
 	grid-row-start: 1;
 	text-align: right;
@@ -35,10 +38,6 @@ th {
 
 .event {
 	background-color: #CCC;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
 }
 
 .event-end {
@@ -51,10 +50,22 @@ th {
 	border-bottom-left-radius: 10px;
 }
 
+.hour:nth-child(1) > .event { grid-column-start: 1; }
+.hour:nth-child(2) > .event { grid-column-start: 2; }
+.hour:nth-child(3) > .event { grid-column-start: 3; }
+.hour:nth-child(4) > .event { grid-column-start: 4; }
+.hour:nth-child(5) > .event { grid-column-start: 5; }
+.hour:nth-child(6) > .event { grid-column-start: 6; }
+.hour:nth-child(7) > .event { grid-column-start: 7; }
+.hour:nth-child(8) > .event { grid-column-start: 8; }
+.hour:nth-child(9) > .event { grid-column-start: 9; }
+.hour:nth-child(10) > .event { grid-column-start: 10; }
+.hour:nth-child(11) > .event { grid-column-start: 11; }
 
 
-[data-span="1"] {	width: 110px;}
-[data-span="2"] {  width: 220px;}
+
+[data-span="1"] { grid-column-end: span 1; }
+[data-span="2"] { grid-column-end: span 2; }
 [data-span="3"] { grid-column-end: span 3; }
 [data-span="4"] { grid-column-end: span 4; }
 [data-span="5"] { grid-column-end: span 5; }
@@ -65,3 +76,7 @@ th {
 
 /* other */
 a { color: blue; }
+
+.day-container{
+    border: 1px solid black;
+}

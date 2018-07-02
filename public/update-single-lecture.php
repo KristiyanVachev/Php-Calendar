@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Use an HTML form to edit an entry in the
- * users table.
- *
- */
-
 require "../config.php";
 require "../common.php";
 
@@ -31,14 +25,6 @@ if (isset($_POST['submit'])) {
             "editedId"  => $_GET["id"],
             "date"      => $_POST['date']
         ];
-
-/*        $sql = "UPDATE lectures
-            SET id = :id, 
-              subjectName = :subjectName
-            WHERE id = :id";
-
-        $statement = $connection->prepare($sql);
-        $statement->execute($lecture);*/
 
         $sql = sprintf(
             "INSERT INTO %s (%s) values (%s)",
@@ -67,7 +53,7 @@ if (isset($_GET['id'])) {
         $statement->bindValue(':id', $id);
         $statement->execute();
 
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $oldLecture = $statement->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
     }
@@ -80,25 +66,53 @@ if (isset($_GET['id'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-    <blockquote><?php echo escape($_POST['subjectName']); ?> successfully updated.</blockquote>
+    <blockquote><?php echo escape($_POST['subjectName']); ?> successfully updated. Waiting for administrator approval.</blockquote>
+    <?php header("Location: update-lectures.php"); ?>
+
 <?php endif; ?>
+<a href="update-lectures.php">Back to lectures</a>
 
 <h2>Edit a lecture</h2>
 
 <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-    <?php foreach ($user as $key => $value) : ?>
-        <?php
-            //TODO don't show some values
-            if ($key === 'LectureStatus'){
-            }
-        ?>
-        <label for="<?php echo $key; ?>"><?php echo ucfirst($key); ?></label>
-        <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'id' ? 'readonly' : null); ?>>
-    <?php endforeach; ?>
+
+    <label>
+        Subject name:
+        <input type="text" value="<?php echo escape($oldLecture['subjectName']); ?>" maxlength="30" required name="<?php echo subjectName ?>"/>
+    </label>
+
+    <label>
+        Lecturer name:
+        <input type="text" value="<?php echo escape($oldLecture['lecturerName']); ?>" maxlength="30" required name="<?php echo lecturerName ?>"/>
+    </label>
+
+    <label>
+        Room:
+        <input type="text" value="<?php echo escape($oldLecture['room']); ?>" maxlength="30" required name="<?php echo room ?>"/>
+    </label>
+
+    <label>
+        Semester Room:
+        <input type="text" value="<?php echo escape($oldLecture['semesterRoom']); ?>" maxlength="30" required name="<?php echo semesterRoom ?>"/>
+    </label>
+
+    <label>
+        Start hour:
+        <input type="number" min="9" max="18" value="<?php echo escape($oldLecture['startHour']); ?>" required name="<?php echo startHour ?>"/>
+    </label>
+
+    <label>
+        Duration:
+        <input type="number" min="1" max="11" value="<?php echo escape($oldLecture['duration']); ?>" required name="<?php echo duration ?>"/>
+    </label>
+
+    <label>
+        Day id:
+        <input type="number" min="1" max="5" value="<?php echo escape($oldLecture['dayId']); ?>" required name="<?php echo dayId ?>"/>
+    </label>
+
     <input type="submit" name="submit" value="Submit">
 </form>
-
-<a href="index.php">Back to home</a>
 
 <?php require "templates/footer.php"; ?>

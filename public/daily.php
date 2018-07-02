@@ -34,6 +34,7 @@ else{
 
 
 <?php
+echo "<a href=\"weekly.php\">Back to weekly view</a>";
 
 switch ($id){
     case 1:
@@ -89,4 +90,3 @@ switch ($id){
 
     echo "</div>";
 
-    echo "<a href=\"weekly.php\">Back to weekly view</a>";

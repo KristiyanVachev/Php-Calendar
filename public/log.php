@@ -23,6 +23,7 @@ try {
 <?php require "templates/header.php"; ?>
 
 <h2>Lectures log</h2>
+    <a href="index.php">Back to home</a>
 
 <table>
     <thead>
@@ -57,6 +58,5 @@ try {
     </tbody>
 </table>
 
-<a href="index.php">Back to home</a>
 
 <?php require "templates/footer.php"; ?>

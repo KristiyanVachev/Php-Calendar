@@ -62,6 +62,7 @@ try {
 <?php require "templates/header.php"; ?>
 
     <h2>Approve lectures</h2>
+    <a href="index.php">Back to home</a>
 
 <?php if ($success) echo $success; ?>
 
@@ -96,6 +97,5 @@ try {
         </tbody>
     </table>
 
-    <a href="index.php">Back to home</a>
 
 <?php require "templates/footer.php"; ?>

@@ -35,6 +35,8 @@ if (isset($_POST['submit'])) {
                 $_SESSION['role'] = 'moderator';
             }
             $_SESSION['session_start'] = time();
+
+            header("Location: index.php");
         }
         else{
             echo "Wrong password or username";

@@ -4,6 +4,10 @@
 
 echo "Check out our awesome weekly calendar: ";
 echo "<a href=\"weekly.php\"><strong>Weekly calendar</strong></a>";
+echo "</br>";
+echo "Login for more functions:";
+echo "<a href=\"login.php\"><strong>Login</strong></a>";
+
 
 if ($_SESSION['role'] != 'admin'){
     echo "<h3>Admin only functions:</h3>";

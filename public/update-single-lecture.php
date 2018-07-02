@@ -51,9 +51,6 @@ if (isset($_POST['submit'])) {
         echo $sql . "<br>" . $error->getMessage();
     }
 
-
-
-
 }
 
 if (isset($_GET['id'])) {
@@ -87,6 +84,11 @@ if (isset($_GET['id'])) {
 <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
     <?php foreach ($user as $key => $value) : ?>
+        <?php
+            //TODO don't show some values
+            if ($key === 'LectureStatus'){
+            }
+        ?>
         <label for="<?php echo $key; ?>"><?php echo ucfirst($key); ?></label>
         <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'id' ? 'readonly' : null); ?>>
     <?php endforeach; ?>

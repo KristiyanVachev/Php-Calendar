@@ -1,10 +1,18 @@
 <?php include "templates/header.php"; ?>
 
-<ul>
-	<li><a href="create.php"><strong>Create</strong></a> - add a user</li>
-	<li><a href="read.php"><strong>Read</strong></a> - find a user</li>
-	<li><a href="update.php"><strong>Update</strong></a> - edit a user</li>
-	<li><a href="delete.php"><strong>Delete</strong></a> - delete a user</li>
-</ul>
+<?php
+
+if ($_SESSION['role'] != 'admin'){
+   echo "<div><a href=\"approve.php\"><strong>Approve changes</strong></a></div>";
+}
+
+if (!($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'moderator')){
+    echo "<div><a href=\"update-lectures.php\"><strong>Change lectures</strong></a></div>";
+}
+
+echo "<div><a href=\"weekly.php\"><strong>Weekly calendar</strong></a></div>";
+
+
+ ?>
 
 <?php include "templates/footer.php"; ?>

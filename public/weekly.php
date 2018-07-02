@@ -69,7 +69,7 @@ try {
                             endforeach;
 
                         if ($noLectures && $hour == 19){
-                            echo "<div > No lectures today</div>";
+                            echo "<div><b>No lectures today</b></div>";
                         }
                         echo "</div>";
                     }

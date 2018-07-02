@@ -9,6 +9,10 @@
 require "../config.php";
 require "../common.php";
 
+if (!($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'moderator')){
+    header("Location: login.php");
+}
+
 if (isset($_POST['submit'])) {
     if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
 

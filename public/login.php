@@ -24,10 +24,10 @@ if (isset($_POST['submit'])) {
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         //$hash = password_hash('admin', PASSWORD_DEFAULT);
-        //echo $hash;
-        //$isValid = password_verify('admin', $user['pass']);
+        $isValid = password_verify($_POST['pass'], $user['pass']);
 
-        if ($user["pass"] == $_POST['pass']){
+        //if ($user["pass"] == $_POST['pass']){
+        if ($isValid){
             if ($user["username"] == 'admin'){
                 $_SESSION['role'] = 'admin';
             }

@@ -1,6 +1,6 @@
 # Php-Calendar
 
-A simple PHP application designed for the Web course in sofia University.
+A simple PHP application designed for the Web course at Sofia University.
 
 ![alt text](https://i.gyazo.com/87b50cb2b57c7555f51a97769b5c9d73.png "Calendar view")
 
